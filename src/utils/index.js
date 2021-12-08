@@ -23,6 +23,81 @@ const utils = {
 }
 const _toString = Object.prototype.toString
 const _has = Object.prototype.hasOwnProperty
+export const toString = Object.prototype.toString
+export const hasOwn = Object.prototype.hasOwnProperty
+const getProto = Object.getPrototypeOf
+const fnToString = hasOwn.toString
+const ObjectFunctionString = fnToString.call(Object)
+
+const class2type = {
+  '[object Boolean]': 'boolean',
+  '[object Number]': 'number',
+  '[object String]': 'string',
+  '[object Function]': 'function',
+  '[object Array]': 'array',
+  '[object Date]': 'date',
+  '[object RegExp]': 'regExp',
+  '[object Object]': 'object',
+  '[object Error]': 'error'
+}
+
+export const typeOf = function typeOf(obj) {
+  return obj == null ? String(obj) : class2type[toString.call(obj)] || 'object'
+}
+
+export const isObject = function isObject(obj) {
+  return typeOf(obj) === 'object'
+}
+
+export const isPlainObject = function isPlainObject(obj) {
+  if (!obj || toString.call(obj) !== '[object Object]') {
+    return false
+  }
+
+  const proto = getProto(obj)
+
+  if (!proto) {
+    return true
+  }
+
+  const Ctor = hasOwn.call(proto, 'constructor') && proto.constructor
+  return typeof Ctor === 'function' && fnToString.call(Ctor) === ObjectFunctionString
+}
+
+export const isEmptyObject = function isEmptyObject(obj) {
+  const type = typeOf(obj)
+
+  if (type === 'object' || type === 'array') {
+    for (const name in obj) {
+      if (hasOwn.call(obj, name)) {
+        return false
+      }
+    }
+  }
+
+  return true
+}
+
+export const isNumber = function isNumber(value) {
+  return typeof value === 'number' && isFinite(value)
+}
+
+export const isNumeric = function isNumeric(value) {
+  return value - parseFloat(value) >= 0
+}
+
+export const isDate = function isDate(value) {
+  return typeOf(value) === 'date'
+}
+
+export const isSame = function isSame(x, y) {
+  return x === y || typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y)
+}
+
+export const isNull = function isNull(x) {
+  return x === null || x === undefined
+}
+
 
 // const encode = encodeURIComponent
 const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
