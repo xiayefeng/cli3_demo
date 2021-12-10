@@ -1,4 +1,4 @@
-const CompressionPlugin = require('compression-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const path = require('path')
 const isProd = process.env.NODE_ENV === 'production'
@@ -26,14 +26,14 @@ module.exports = {
   configureWebpack: config => {
     const plugins = []
     if (isProd) {
-      plugins.push(
+     /*  plugins.push(
         new CompressionPlugin({
           test: /\.js$|\.html$|\.css$/, // 匹配的文件名
           threshold: 8192, // 对 超过10K的数据进行压缩
           deleteOriginalAssets: false, // 是否删除源文件
           minRatio: 0.8 // 压缩率 只有压缩率比这个值小的资源才会被处理
         })
-      )
+      ) */
 
       /* plugins.push(
         new UglifyJsPlugin({
@@ -59,7 +59,7 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
 
     // svg
-    const svgRule = config.module.rule('svg')
+   /*  const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
     svgRule
       .include
@@ -70,7 +70,7 @@ module.exports = {
       .options({
         symbolId: 'ph-[name]'
       })
-      .end()
+      .end() */
 
     config
       // 开发环境
@@ -100,12 +100,12 @@ module.exports = {
           ])
       })
     // image exclude
-    const imagesRule = config.module.rule('images')
+   /*  const imagesRule = config.module.rule('images')
     imagesRule
       .test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
       .exclude
       .add(resolve('src/assets/svg-icons/icons'))
-      .end()
+      .end() */
 
     // 压缩代码
     config.optimization.minimize(true)

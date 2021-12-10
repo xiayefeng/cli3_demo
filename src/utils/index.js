@@ -41,15 +41,15 @@ const class2type = {
   '[object Error]': 'error'
 }
 
-export const typeOf = function typeOf(obj) {
+export const typeOf = function typeOf (obj) {
   return obj == null ? String(obj) : class2type[toString.call(obj)] || 'object'
 }
 
-export const isObject = function isObject(obj) {
+export const isObject = function isObject (obj) {
   return typeOf(obj) === 'object'
 }
 
-export const isPlainObject = function isPlainObject(obj) {
+export const isPlainObject = function isPlainObject (obj) {
   if (!obj || toString.call(obj) !== '[object Object]') {
     return false
   }
@@ -64,7 +64,7 @@ export const isPlainObject = function isPlainObject(obj) {
   return typeof Ctor === 'function' && fnToString.call(Ctor) === ObjectFunctionString
 }
 
-export const isEmptyObject = function isEmptyObject(obj) {
+export const isEmptyObject = function isEmptyObject (obj) {
   const type = typeOf(obj)
 
   if (type === 'object' || type === 'array') {
@@ -78,26 +78,25 @@ export const isEmptyObject = function isEmptyObject(obj) {
   return true
 }
 
-export const isNumber = function isNumber(value) {
+export const isNumber = function isNumber (value) {
   return typeof value === 'number' && isFinite(value)
 }
 
-export const isNumeric = function isNumeric(value) {
+export const isNumeric = function isNumeric (value) {
   return value - parseFloat(value) >= 0
 }
 
-export const isDate = function isDate(value) {
+export const isDate = function isDate (value) {
   return typeOf(value) === 'date'
 }
 
-export const isSame = function isSame(x, y) {
-  return x === y || typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y)
+export const isSame = function isSame (x, y) {
+  return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
 }
 
-export const isNull = function isNull(x) {
+export const isNull = function isNull (x) {
   return x === null || x === undefined
 }
-
 
 // const encode = encodeURIComponent
 const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -191,7 +190,7 @@ export function find (list, f) {
   return list.filter(f)[0]
 }
 
-export function hasOwn (obj, key) {
+export function hasOwn2 (obj, key) {
   return obj != null && _has.call(obj, key)
 }
 
@@ -303,7 +302,7 @@ export function isFunction (val) {
   return typeof val === 'function'
 }
 
-export function isObject (obj) {
+export function isObject2 (obj) {
   return obj !== null && typeof obj === 'object'
 }
 
@@ -351,7 +350,7 @@ export function selectFrom (lowerValue, upperValue) {
   return Math.floor(Math.random() * chooices + lowerValue)
 }
 
-export function isPlainObject (obj) {
+export function isPlainObject2 (obj) {
   return _toString.call(obj) === '[object Object]'
 }
 
