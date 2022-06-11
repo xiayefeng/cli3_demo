@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     icon () {
-      return `#ph-${this.name}`
+      return `#icon-${this.name}`
     }
   }
 }
