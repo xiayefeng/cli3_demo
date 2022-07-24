@@ -124,7 +124,7 @@ export function throttle (func, timeFrame) {
     }
   }
 }
-const key = CryptoJS.enc.Utf8.parse('sptaicaresnetspt')
+const key = CryptoJS.enc.Utf8.parse('ssssssss')
 
 export function Encrypt (word) {
   let srcs = CryptoJS.enc.Utf8.parse(word)
