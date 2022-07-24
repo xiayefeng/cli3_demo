@@ -38,7 +38,9 @@ const class2type = {
   '[object Date]': 'date',
   '[object RegExp]': 'regExp',
   '[object Object]': 'object',
-  '[object Error]': 'error'
+  '[object Error]': 'error',
+  '[object Symbol]': 'symbol',
+  '[object BigInt]': 'bigint'
 }
 
 export const typeOf = function typeOf (obj) {
