@@ -65,7 +65,7 @@
     "vue-cli-plugin-style-resources-loader": "^0.1.5",
     "vue-template-compiler": "^2.6.12",
     "watch": "^0.13.0",
-    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-bundle-analyzer": "^4.9.0",
     "ws": "^7.4.6"
   },
   "browserslist": [
